@@ -15,9 +15,6 @@ def gen_mines(height, width, difficulty):
       mines.append(coord)
   return mines
 
-
-mines = gen_mines(12, 12, "medium")
-
 class Square:
   def __init__(self, column, row, mine = False, revealed = False, flagged = False):
     self.col = column
@@ -62,35 +59,35 @@ class Board:
     for square in square_coord:
       if square[0] > 0:
         self.board_dict[square].add_adjacent_by_coordinate((square[0]-1, square[1]))
-        if self.board_dict[(square[0]-1, square[1])].mine == True and self.board_dict[square].mine == False:
+        if self.board_dict[(square[0]-1, square[1])].mine == True:
           self.board_dict[square].adjacents += 1
       if square[0] < self.width - 1:
         self.board_dict[square].add_adjacent_by_coordinate((square[0]+1, square[1]))
-        if self.board_dict[(square[0]+1, square[1])].mine == True and self.board_dict[square].mine == False:
+        if self.board_dict[(square[0]+1, square[1])].mine == True:
           self.board_dict[square].adjacents += 1
       if square[1] > 0:
         self.board_dict[square].add_adjacent_by_coordinate((square[0], square[1]-1))
-        if self.board_dict[(square[0], square[1]-1)].mine == True and self.board_dict[square].mine == False:
+        if self.board_dict[(square[0], square[1]-1)].mine == True:
           self.board_dict[square].adjacents += 1
       if square[1] < self.height - 1:
         self.board_dict[square].add_adjacent_by_coordinate((square[0], square[1]+1))
-        if self.board_dict[(square[0], square[1]+1)].mine == True and self.board_dict[square].mine == False:
+        if self.board_dict[(square[0], square[1]+1)].mine == True:
           self.board_dict[square].adjacents += 1
       if square[0] > 0 and square[1] > 0:
         self.board_dict[square].add_adjacent_by_coordinate((square[0]-1, square[1]-1))
-        if self.board_dict[(square[0]-1, square[1]-1)].mine == True and self.board_dict[square].mine == False:
+        if self.board_dict[(square[0]-1, square[1]-1)].mine == True:
           self.board_dict[square].adjacents += 1
       if square[0] > 0 and square[1] < self.height - 1:
         self.board_dict[square].add_adjacent_by_coordinate((square[0]-1, square[1]+1))
-        if self.board_dict[(square[0]-1, square[1]+1)].mine == True and self.board_dict[square].mine == False:
+        if self.board_dict[(square[0]-1, square[1]+1)].mine == True:
           self.board_dict[square].adjacents += 1
       if square[0] < self.width - 1 and square[1] > 0:
         self.board_dict[square].add_adjacent_by_coordinate((square[0]+1, square[1]-1))
-        if self.board_dict[(square[0]+1, square[1]-1)].mine == True and self.board_dict[square].mine == False:
+        if self.board_dict[(square[0]+1, square[1]-1)].mine == True:
           self.board_dict[square].adjacents += 1
       if square[0] < self.width - 1 and square[1] < self.height - 1:
         self.board_dict[square].add_adjacent_by_coordinate((square[0]+1, square[1]+1))
-        if self.board_dict[(square[0]+1, square[1]+1)].mine == True and self.board_dict[square].mine == False:
+        if self.board_dict[(square[0]+1, square[1]+1)].mine == True:
           self.board_dict[square].adjacents += 1
 
 
